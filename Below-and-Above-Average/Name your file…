@@ -1,0 +1,57 @@
+package telerik;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+/**
+ *
+ * @author Vasil
+ */
+public class Average {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+        String[] stringArr = input.nextLine().split(",");
+        ArrayList<Integer> intArr = new ArrayList<>();
+        for (int i = 0; i < stringArr.length; i++) {
+            intArr.add(Integer.parseInt(stringArr[i]));
+
+        }
+        
+        double sum = 0;
+        for (int i = 0; i < intArr.size(); i++) {
+            sum += intArr.get(i);
+        }
+        double avg = sum / intArr.size();
+
+        System.out.printf("avg: %.2f\n", avg);
+
+        ArrayList<Integer> aboveAvg = new ArrayList<>();
+        ArrayList<Integer> belowAvg = new ArrayList<>();
+
+        for (int i = 0; i < intArr.size(); i++) {
+            if (intArr.get(i) < avg) {
+                belowAvg.add(intArr.get(i));
+            } else if (intArr.get(i) > avg) {
+
+                aboveAvg.add(intArr.get(i));
+
+            }
+
+        }
+        System.out.print("below: ");
+        for (int i = 0; i < belowAvg.size() - 1; i++) {
+            System.out.print(belowAvg.get(i) + ",");
+        }
+        System.out.print(belowAvg.get(belowAvg.size() - 1));
+        ///////////////////
+        System.out.print("\nabove: ");
+        for (int i = 0; i < aboveAvg.size() - 1; i++) {
+            System.out.print(aboveAvg.get(i) + ",");
+        }
+        System.out.print(aboveAvg.get(aboveAvg.size() - 1));
+
+    }
+
+}
